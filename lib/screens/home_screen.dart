@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '/widgets/spending_graph.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String routeName = '/screen/home_screen';
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
