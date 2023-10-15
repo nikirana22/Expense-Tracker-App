@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '/model/expense.dart';
+import '/provider/expenses_manager.dart';
+import '/screens/expense_screen.dart';
 import '/widgets/spending_graph.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,6 +13,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
+    final ExpensesManager expensesManager = context.watch<ExpensesManager>();
+    final List<Expense> expenses = expensesManager.expenses;
 
     return Scaffold(
       appBar: AppBar(
@@ -80,7 +86,9 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, ExpenseScreen.routeName);
+        },
       ),
     );
   }
